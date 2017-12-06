@@ -1,0 +1,48 @@
+{
+  "name": "mithril-transition-group",
+  "version": "0.1.0",
+  "description": "A set of Mithril higher-order components for creating state/class based transitions",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc -p src",
+    "watch": "tsc -p src --w",
+    "test": "mocha --compilers ts:ts-node/register -r jsdom-global/register ./test/**/*.spec.ts",
+    "test:watch": "mocha --compilers ts:ts-node/register --watch -r jsdom-global/register ./test/**/*.spec.ts",
+    "lint": "tslint src/**/*.ts",
+    "example": "cd examples && webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasilrimar/mithril-transition-group.git"
+  },
+  "keywords": [
+    "mithril",
+    "transition"
+  ],
+  "author": "Vasil Rimar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vasilrimar/mithril-transition-group/issues"
+  },
+  "homepage": "https://github.com/vasilrimar/mithril-transition-group#readme",
+  "devDependencies": {
+    "@types/mithril": "^1.1.12",
+    "@types/mocha": "^2.2.44",
+    "assert": "^1.4.1",
+    "awesome-typescript-loader": "^3.4.1",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^4.0.1",
+    "open-browser-webpack-plugin": "0.0.5",
+    "ospec": "^1.4.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.6"
+  },
+  "dependencies": {
+    "element-class": "^0.2.2",
+    "mithril": "^1.1.5"
+  }
+}
