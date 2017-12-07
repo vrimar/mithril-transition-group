@@ -6,7 +6,6 @@ const TIMEOUT_DELAY = 17;
 export interface ITimeout {
   enter: number;
   exit: number;
-  appear: number;
 }
 
 export interface ITransitionAttrs {
@@ -110,9 +109,8 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     if (timeout !== null && typeof timeout !== 'number') {
       enter = timeout.enter;
       exit = timeout.exit;
-      appear = timeout.appear;
     }
-    return { enter, exit, appear };
+    return { enter, exit };
   }
 
   updateStatus(attrs: ITransitionAttrs, mounting = false) {
