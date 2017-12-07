@@ -1,62 +1,57 @@
 import * as m from 'mithril';
 import * as assert from 'assert';
 import { Transition, TransitionState } from '../src';
-import * as o from 'ospec';
-import { setTimeout } from 'timers';
 
 const transitionDuration = 100;
 
 describe('Transition', () => {
-  let transition;
-  const root = {
-    transition: null,
-    view() {
-      this.transition = transition;
-      return transition;
-    }
-  };
-
-  beforeEach(() => {
-    m.mount(document.body, null);
-    transition = undefined;
-  })
+  beforeEach(() => m.mount(document.body, null));
 
   it('handles entering state/callbacks', (done) => {
     let count = 0;
+    let transition = null;
 
-    transition = m(Transition, {
-      isVisible: true,
-      onEnter: () => {
-        count++;
-        assert.equal(transition.state.status, TransitionState.EXITED);
-      },
-      onEntering: () => {
-        count++;
-        assert.equal(transition.state.status, TransitionState.ENTERING);
-      },
-      onEntered: () => {
-        count++;
-        assert.equal(transition.state.status, TransitionState.ENTERED);
-        assert.equal(count, 3);
-        done();
-      },
-      timeout: transitionDuration
-    });
+    let container = {
+      view() {
+        transition = m(Transition, {
+          isVisible: true,
+          onEnter: () => {
+            count++;
+            assert.equal(transition.state.status, TransitionState.EXITED);
+          },
+          onEntering: () => {
+            count++;
+            assert.equal(transition.state.status, TransitionState.ENTERING);
+          },
+          onEntered: () => {
+            count++;
+            assert.equal(transition.state.status, TransitionState.ENTERED);
+            assert.equal(count, 3);
+            done();
+          },
+          timeout: transitionDuration
+        });
+        return m('', transition);
+      }
+    }
 
-    m.mount(document.body, root);
+    m.mount(document.body, container);
   });
 
   it('handles exiting state/callbacks', (done) => {
     let count = 0;
+    let transition = null;
 
-    const container = {
+    let container = {
       isVisible: true,
       view(vnode) {
         transition = m(Transition, {
           isVisible: container.isVisible,
           onEntered: () => {
-            container.isVisible = false;
-            m.redraw();
+            if (container.isVisible) {
+              container.isVisible = false;
+              m.redraw();
+            }
           },
           onExit: () => {
             count++;
@@ -74,7 +69,7 @@ describe('Transition', () => {
           },
           timeout: transitionDuration
         });
-        return transition;
+        return m('', [transition]);
       }
     };
 
