@@ -43,6 +43,6 @@
   },
   "dependencies": {
     "element-class": "^0.2.2",
-    "mithril": "^1.1.5"
+    "mithril": "^1.1.6"
   }
 }
