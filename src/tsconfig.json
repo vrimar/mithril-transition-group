@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"lib": [
+			"dom",
+			"es7"
+		],
+		"module": "commonjs",
+		"noStrictGenericChecks": true,
+		"outDir": "../lib",
+		"sourceMap": false,
+		"target": "es5",
+		"typeRoots": [
+			"../node_modules/@types/"
+		]
+	},
+	"files": [
+		"index.ts"
+	],
+	"exclude": [
+		"../node_modules"
+	]
+}
