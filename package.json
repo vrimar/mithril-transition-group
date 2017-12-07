@@ -39,10 +39,10 @@
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.6"
+    "webpack-dev-server": "^2.9.6",
+    "mithril": "^1.1.6"
   },
   "dependencies": {
-    "element-class": "^0.2.2",
-    "mithril": "^1.1.6"
+    "element-class": "^0.2.2"
   }
 }
