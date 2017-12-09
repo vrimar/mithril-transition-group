@@ -9,11 +9,7 @@ npm install --save mithril-transition-group
 ```
 
 ## Transition
-`Transition` is a higher-order component that allows you to transition children based on current animation state with a declarative API.
-
-### Usage
-
-By default, the `Transition` component does not alter it's children; it only tracks "enter" and "exit" transitions. The example below provides an example of transitioning it's content using inline styles:
+`Transition` is a higher-order component that allows you to transition children based on current animation state.
 
 There are 4 main states a `Transition` can be in:
 1. ENTERING
@@ -21,58 +17,15 @@ There are 4 main states a `Transition` can be in:
 3. EXITING
 4. EXITED
 
-```javascript
-const duration = 400;
+By default, the `Transition` component does not alter it's children; it only tracks "enter" and "exit" transitions.
 
-const defaultStyle = {
-  transition: `all ${duration}ms ease-in-out`,
-  opacity: 0,
-  background: 'red',
-};
+## Transition Example
 
-const transitionStyles = {
-  entering: {
-    opacity: 0,
-    background: 'blue'
-  },
-  entered: {
-    opacity: 1,
-    background: 'white'
-  },
-  exiting: {
-    background: 'red'
-  }
-};
-
-const Example = {
-  isVisible: true,
-
-  view() {
-    return m('', [
-      m('button', { onclick: () => this.isVisible = !this.isVisible }, 'Toggle Transition'),
-
-      m(Transition, {
-        isVisible: this.isVisible,
-        content: (state) => {
-          return m('', {
-            style: {
-              ...defaultStyle,
-              ...transitionStyles[state]
-            }
-          }, 'Fade transition')
-        },
-        exitTimeout: duration
-      })
-    ]);
-  }
-};
-
-m.mount(document.body, Example);
-```
+[Transition Example](https://codesandbox.io/s/w7o9q9zzk7)
 
 ## Transition API
 ```javascript
-export interface ITransitionAttrs {
+interface ITransitionAttrs {
   /** Displays the content; triggers onEnter/onExit callbacks */
   isVisible?: boolean;
 
@@ -107,22 +60,25 @@ export interface ITransitionAttrs {
 
 ## CSS Transition
 
-A higher-order component that uses CSS classes for transitions. It is inspired by [react-transition-group](http://www.nganimate.org/).
+A higher-order component that uses CSS classes for transitions. It is inspired by [ng-animate](http://www.nganimate.org/).
 
-### Usage
 `CSSTransition` applies a pair of classes (specified by the `transitionClass` property) to `content` during the `enter` and `exit` transition states. Assuming `transitionClass="fade"`, the lifecycle process is as follows.
 
 1. onEnter: `.fade-enter` class is added to `content`
 2. onEntering: `.fade-enter-active` class is added to `content`
 3. onEntered: `.fade-enter` and `.fade-enter-active` are removed from `content`
-4. onExit: `.fade-exit` class is added to `content
+4. onExit: `.fade-exit` class is added to `content`
 5. onExiting: `.fade-exit-active` class is added to `content`
 6. onExited: `.fade-exit` and `.fade-exit-active` are removed from `content`
 
-### CSS Transition API
+## CSSTransition Example
+
+[CSSTransition Dialog Example](https://codesandbox.io/s/p9vp1o940m)
+
+### CSSTransition API
 
 ```javascript
-export interface ICSSTransitionAttrs {
+interface ICSSTransitionAttrs {
   /** Displays the content; triggers onEnter/onExit callbacks */
   isVisible?: boolean;
 
@@ -153,7 +109,7 @@ export interface ICSSTransitionAttrs {
     exit: number;
   };
 
-  /** Base transition class to use for CSS transitions **/
+  /** CSS class base to use for enter/exit transitions */
   transitionClass: string;
 }
 ```
