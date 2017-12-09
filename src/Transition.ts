@@ -102,9 +102,9 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
   getTimeouts(attrs: ITransitionAttrs) {
     const { timeout } = attrs;
     // tslint:disable-next-line:one-variable-per-declaration
-    let enter, exit, appear;
+    let enter, exit;
 
-    exit = enter = appear = timeout;
+    exit = enter = timeout;
 
     if (timeout !== null && typeof timeout !== 'number') {
       enter = timeout.enter;

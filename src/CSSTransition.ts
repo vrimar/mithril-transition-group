@@ -4,6 +4,7 @@ import { Transition, ITransitionAttrs } from './Transition';
 import { safeCall } from './utils';
 
 export interface ICSSTransitionAttrs extends ITransitionAttrs {
+  /** CSS class base to use for enter/exit transitions */
   transitionClass?: string;
 }
 
