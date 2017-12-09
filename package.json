@@ -8,8 +8,7 @@
     "watch": "tsc -p src --w",
     "test": "mocha --compilers ts:ts-node/register -r jsdom-global/register ./test/**/*.spec.ts",
     "test:watch": "mocha --compilers ts:ts-node/register --watch -r jsdom-global/register ./test/**/*.spec.ts",
-    "lint": "tslint src/**/*.ts",
-    "example": "cd examples && webpack-dev-server"
+    "lint": "tslint src/**/*.ts"
   },
   "repository": {
     "type": "git",
