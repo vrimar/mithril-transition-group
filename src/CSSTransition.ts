@@ -11,7 +11,7 @@ export interface ICSSTransitionAttrs extends ITransitionAttrs {
 export type transitionType = 'enter' | 'exit';
 
 export class CSSTransition implements m.ClassComponent<ICSSTransitionAttrs> {
-  view({ attrs }: m.CVnode<ICSSTransitionAttrs>) {
+  public view({ attrs }: m.CVnode<ICSSTransitionAttrs>) {
     return m(Transition, {
       ...attrs as ITransitionAttrs,
       onEnter: (node: HTMLElement) => this.onEnter(node, attrs),
@@ -23,14 +23,14 @@ export class CSSTransition implements m.ClassComponent<ICSSTransitionAttrs> {
     });
   }
 
-  onEnter = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
+  private onEnter = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
     this.removeClasses(node, attrs, 'exit');
     elClass(node).add(`${attrs.transitionClass}-enter`);
 
     safeCall(attrs.onEnter, node);
   }
 
-  onEntering = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
+  private onEntering = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
     this.removeClasses(node, attrs, 'exit');
 
     elClass(node).add(`${attrs.transitionClass}-enter-active`);
@@ -40,19 +40,19 @@ export class CSSTransition implements m.ClassComponent<ICSSTransitionAttrs> {
     safeCall(attrs.onEntering, node);
   }
 
-  onEntered = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
+  private onEntered = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
     this.removeClasses(node, attrs, 'enter');
     safeCall(attrs.onEntered, node);
   }
 
-  onExit = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
+  private onExit = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
     this.removeClasses(node, attrs, 'enter');
     elClass(node).add(`${attrs.transitionClass}-exit`);
 
     safeCall(attrs.onExit, node);
   }
 
-  onExiting = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
+  private onExiting = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
     this.removeClasses(node, attrs, 'enter');
 
     elClass(node).add(`${attrs.transitionClass}-exit-active`);
@@ -62,13 +62,13 @@ export class CSSTransition implements m.ClassComponent<ICSSTransitionAttrs> {
     safeCall(attrs.onExiting, node);
   }
 
-  onExited = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
+  private onExited = (node: HTMLElement, attrs: ICSSTransitionAttrs) => {
     this.removeClasses(node, attrs, 'exit');
 
     safeCall(attrs.onExited, node);
   }
 
-  removeClasses(node: HTMLElement, attrs: ICSSTransitionAttrs, type: transitionType) {
+  private removeClasses(node: HTMLElement, attrs: ICSSTransitionAttrs, type: transitionType) {
     elClass(node).remove(`${attrs.transitionClass}-${type}`);
     elClass(node).remove(`${attrs.transitionClass}-${type}-active`);
   }

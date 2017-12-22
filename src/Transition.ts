@@ -46,29 +46,29 @@ export enum TransitionState {
 }
 
 export class Transition implements m.ClassComponent<ITransitionAttrs> {
-  status: TransitionState = TransitionState.UNMOUNTED;
-  nextStatus: TransitionState = null;
-  node: HTMLElement = null;
-  timeoutStack: number[] = [];
+  private status: TransitionState = TransitionState.UNMOUNTED;
+  private nextStatus: TransitionState = null;
+  private node: HTMLElement = null;
+  private timeoutStack: number[] = [];
 
-  oninit({ attrs }: m.CVnode<ITransitionAttrs>) {
+  public oninit({ attrs }: m.CVnode<ITransitionAttrs>) {
     if (attrs.isVisible) {
       this.status = TransitionState.EXITED;
       this.nextStatus = TransitionState.ENTERING;
     }
   }
 
-  oncreate({ attrs, dom }: m.CVnodeDOM<ITransitionAttrs>) {
+  public oncreate({ attrs, dom }: m.CVnodeDOM<ITransitionAttrs>) {
     this.node = dom as HTMLElement;
     this.updateStatus(attrs);
   }
 
-  onupdate({ attrs, dom }: m.CVnodeDOM<ITransitionAttrs>) {
+  public onupdate({ attrs, dom }: m.CVnodeDOM<ITransitionAttrs>) {
     this.node = dom as HTMLElement;
     this.updateStatus(attrs);
   }
 
-  onbeforeupdate(vnode: m.CVnode<ITransitionAttrs>, old: m.CVnode<ITransitionAttrs>) {
+  public onbeforeupdate(vnode: m.CVnode<ITransitionAttrs>, old: m.CVnode<ITransitionAttrs>) {
     const isVisible = vnode.attrs.isVisible;
 
     if (isVisible && this.status === TransitionState.UNMOUNTED) {
@@ -83,11 +83,11 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     }
   }
 
-  onbeforeremove() {
+  public onbeforeremove() {
     this.clearTimeouts();
   }
 
-  view({ attrs }: m.CVnode<ITransitionAttrs>) {
+  public view({ attrs }: m.CVnode<ITransitionAttrs>) {
     if (this.status === TransitionState.UNMOUNTED) {
       return null;
     }
@@ -99,7 +99,7 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     return attrs.content;
   }
 
-  getTimeouts(attrs: ITransitionAttrs) {
+  private getTimeouts(attrs: ITransitionAttrs) {
     const { timeout } = attrs;
     // tslint:disable-next-line:one-variable-per-declaration
     let enter, exit;
@@ -113,7 +113,7 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     return { enter, exit };
   }
 
-  updateStatus(attrs: ITransitionAttrs, mounting = false) {
+  private updateStatus(attrs: ITransitionAttrs, mounting = false) {
     if (this.nextStatus === TransitionState.ENTERING) {
       this.performEnter(attrs);
     } else if (this.nextStatus === TransitionState.EXITING) {
@@ -123,7 +123,7 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     }
   }
 
-  performEnter(attrs: ITransitionAttrs) {
+  private performEnter(attrs: ITransitionAttrs) {
     const timeouts = this.getTimeouts(attrs);
 
     safeCall(attrs.onEnter, this.node);
@@ -143,7 +143,7 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     }, timeouts.enter + TIMEOUT_DELAY);
   }
 
-  performExit(attrs: ITransitionAttrs) {
+  private performExit(attrs: ITransitionAttrs) {
     const timeouts = this.getTimeouts(attrs);
 
     safeCall(attrs.onExit, this.node);
@@ -163,19 +163,19 @@ export class Transition implements m.ClassComponent<ITransitionAttrs> {
     }, timeouts.exit + TIMEOUT_DELAY);
   }
 
-  performUnmount() {
+  private performUnmount() {
     this.status = TransitionState.UNMOUNTED;
     this.nextStatus = null;
     m.redraw();
   }
 
-  setTimeout(callback: () => void, timeout?: number) {
+  private setTimeout(callback: () => void, timeout?: number) {
     const handle = window.setTimeout(callback, timeout);
     this.timeoutStack.push(handle);
     return () => clearTimeout(handle);
   }
 
-  clearTimeouts = () => {
+  private clearTimeouts = () => {
     if (this.timeoutStack.length) {
       this.timeoutStack.map((timeout) => clearTimeout(timeout));
       this.timeoutStack = [];
