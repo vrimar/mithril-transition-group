@@ -2,7 +2,8 @@
   "name": "mithril-transition-group",
   "version": "0.1.4",
   "description": "A set of Mithril higher-order components for creating state/class based transitions",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc -p src",
     "watch": "tsc -p src --w",
