@@ -1,7 +1,7 @@
 {
   "name": "mithril-transition-group",
-  "version": "0.1.5",
-  "description": "A set of Mithril higher-order components for creating state/class based transitions",
+  "version": "0.1.6",
+  "description": "A set of Mithril components for creating state/class based transitions",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {

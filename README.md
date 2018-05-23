@@ -1,6 +1,6 @@
 # mithril-transition-group
 
-A set of Mithril higher-order components for creating state/class based transitions. Inspired by [react-transition-group](https://github.com/reactjs/react-transition-group).
+A set of Mithril components for creating state/class based transitions. Inspired by [react-transition-group](https://github.com/reactjs/react-transition-group).
 
 ## Installation
 
@@ -9,7 +9,7 @@ npm install --save mithril-transition-group
 ```
 
 ## Transition
-`Transition` is a higher-order component that allows you to transition children based on current animation state.
+`Transition` is a component that allows you to transition children based on current animation state.
 
 There are 4 main states a `Transition` can be in:
 1. ENTERING
@@ -60,7 +60,7 @@ interface ITransitionAttrs {
 
 ## CSS Transition
 
-A higher-order component that uses CSS classes for transitions. It is inspired by [ng-animate](http://www.nganimate.org/).
+A component that uses CSS classes for transitions. It is inspired by [ng-animate](http://www.nganimate.org/).
 
 `CSSTransition` applies a pair of classes (specified by the `transitionClass` property) to `content` during the `enter` and `exit` transition states. Assuming `transitionClass="fade"`, the lifecycle process is as follows.
 
