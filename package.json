@@ -27,20 +27,15 @@
   "homepage": "https://github.com/vasilrimar/mithril-transition-group#readme",
   "devDependencies": {
     "@types/mithril": "^1.1.12",
-    "@types/mocha": "^2.2.48",
+    "@types/mocha": "^5.2.0",
     "assert": "^1.4.1",
-    "awesome-typescript-loader": "^3.4.1",
-    "jsdom": "^11.6.2",
+    "jsdom": "^11.11.0",
     "jsdom-global": "^3.0.2",
-    "mocha": "^5.0.0",
-    "open-browser-webpack-plugin": "0.0.5",
-    "ospec": "^1.4.0",
-    "ts-node": "^4.1.0",
-    "tslint": "^5.9.1",
-    "typescript": "^2.7.1",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1",
-    "mithril": "^1.1.6"
+    "mithril": "^1.1.6",
+    "mocha": "^5.2.0",
+    "ts-node": "^6.0.3",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
   },
   "dependencies": {
     "element-class": "^0.2.2"
