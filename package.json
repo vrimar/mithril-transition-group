@@ -5,11 +5,13 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc -p src",
+    "lint": "tslint src/**/*.ts",
+    "build": "npm run test && npm run lint && tsc -p src",
     "watch": "tsc -p src --w",
     "test": "mocha --compilers ts:ts-node/register -r jsdom-global/register ./test/**/*.spec.ts",
     "test:watch": "mocha --compilers ts:ts-node/register --watch -r jsdom-global/register ./test/**/*.spec.ts",
-    "lint": "tslint src/**/*.ts"
+    "version": "npm run build && git add *",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -27,15 +29,15 @@
   "homepage": "https://github.com/vasilrimar/mithril-transition-group#readme",
   "devDependencies": {
     "@types/mithril": "^1.1.12",
-    "@types/mocha": "^5.2.0",
+    "@types/mocha": "^5.2.5",
     "assert": "^1.4.1",
-    "jsdom": "^11.11.0",
+    "jsdom": "^11.12.0",
     "jsdom-global": "^3.0.2",
     "mithril": "^1.1.6",
     "mocha": "^5.2.0",
-    "ts-node": "^6.0.3",
-    "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
   },
   "dependencies": {
     "element-class": "^0.2.2"
