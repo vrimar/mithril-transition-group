@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "es7"
+    ],
+    "module": "commonjs",
+    "sourceMap": false,
+    "target": "es5"
+  },
+  "exclude": [
+    "../node_modules"
+  ]
+}
