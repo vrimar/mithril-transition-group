@@ -1,4 +1,4 @@
-import * as m from 'mithril';
+import m from 'mithril';
 import { safeCall } from './utils';
 
 const TIMEOUT_DELAY = 17;

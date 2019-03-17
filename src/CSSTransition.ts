@@ -1,5 +1,5 @@
-import * as m from 'mithril';
-import * as elClass from 'element-class';
+import m from 'mithril';
+import elClass from 'element-class';
 import { Transition, ITransitionAttrs } from './Transition';
 import { safeCall } from './utils';
 

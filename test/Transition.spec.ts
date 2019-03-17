@@ -1,5 +1,5 @@
-import * as m from 'mithril';
-import * as assert from 'assert';
+import m from 'mithril';
+import assert from 'assert';
 import { Transition, TransitionState } from '../src';
 
 const transitionDuration = 100;
