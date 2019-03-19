@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vasilrimar/mithril-transition-group.git"
+    "url": "git+https://github.com/vrimar/mithril-transition-group.git"
   },
   "keywords": [
     "mithril",
@@ -24,9 +24,9 @@
   "author": "Vasil Rimar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vasilrimar/mithril-transition-group/issues"
+    "url": "https://github.com/vrimar/mithril-transition-group/issues"
   },
-  "homepage": "https://github.com/vasilrimar/mithril-transition-group#readme",
+  "homepage": "https://github.com/vrimar/mithril-transition-group#readme",
   "devDependencies": {
     "@types/mithril": "^1.1.16",
     "@types/mocha": "^5.2.6",
