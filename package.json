@@ -28,15 +28,15 @@
   },
   "homepage": "https://github.com/vrimar/mithril-transition-group#readme",
   "devDependencies": {
-    "@types/mithril": "^1.1.16",
-    "@types/mocha": "^5.2.6",
-    "assert": "^1.4.1",
-    "jsdom": "^14.0.0",
+    "@types/mithril": "^1.1.17",
+    "@types/mocha": "^5.2.7",
+    "assert": "^2.0.0",
+    "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
     "mithril": "^1.1.6",
-    "mocha": "^6.0.2",
-    "ts-node": "^8.0.3",
-    "tslint": "^5.14.0",
-    "typescript": "^3.3.4000"
+    "mocha": "^6.2.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   }
 }
