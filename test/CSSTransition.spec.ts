@@ -11,7 +11,7 @@ describe('CSSTransition', () => {
     let count = 0;
     let transition = null;
 
-    let container = {
+    const container = {
       view() {
         transition = m(CSSTransition, {
           content: m(''),
@@ -36,26 +36,28 @@ describe('CSSTransition', () => {
         });
         return transition;
       }
-    }
+    };
 
-    const node = document.createElement('div');
-    document.body.appendChild(node);
-    m.mount(node, container);
+    const mountEl = document.createElement('div');
+    document.body.appendChild(mountEl);
+    m.mount(mountEl, container);
   });
 
   it('handles exiting state/callbacks', (done) => {
     let count = 0;
     let transition = null;
 
-    let container = {
+    const container = {
       isVisible: true,
-      view(vnode) {
+      view() {
         transition = m(CSSTransition, {
           isVisible: container.isVisible,
           content: m(''),
           onEntered: () => {
-            container.isVisible = false;
-            m.redraw();
+            requestAnimationFrame(() => {
+              container.isVisible = false;
+              m.redraw.sync();
+            });
           },
           onExit: (node: HTMLElement) => {
             count++;
@@ -79,8 +81,8 @@ describe('CSSTransition', () => {
       }
     };
 
-    const node = document.createElement('div');
-    document.body.appendChild(node);
-    m.mount(node, container);
+    const mountEl = document.createElement('div');
+    document.body.appendChild(mountEl);
+    m.mount(mountEl, container);
   });
 });

@@ -11,7 +11,7 @@ describe('Transition', () => {
     let count = 0;
     let transition = null;
 
-    let container = {
+    const container = {
       view() {
         transition = m(Transition, {
           isVisible: true,
@@ -33,7 +33,7 @@ describe('Transition', () => {
         });
         return m('', transition);
       }
-    }
+    };
 
     m.mount(document.body, container);
   });
@@ -42,16 +42,16 @@ describe('Transition', () => {
     let count = 0;
     let transition = null;
 
-    let container = {
+    const container = {
       isVisible: true,
-      view(vnode) {
+      view() {
         transition = m(Transition, {
           isVisible: container.isVisible,
           onEntered: () => {
-            if (container.isVisible) {
+            requestAnimationFrame(() => {
               container.isVisible = false;
-              m.redraw();
-            }
+              m.redraw.sync();
+            });
           },
           onExit: () => {
             count++;
@@ -63,7 +63,7 @@ describe('Transition', () => {
           },
           onExited: () => {
             count++;
-            assert.equal(transition.state.status, TransitionState.UNMOUNTED);
+            assert.equal(transition.state.status, TransitionState.EXITED);
             assert.equal(count, 3);
             done();
           },
