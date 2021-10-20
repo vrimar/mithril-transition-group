@@ -38,9 +38,7 @@ describe('CSSTransition', () => {
       }
     };
 
-    const mountEl = document.createElement('div');
-    document.body.appendChild(mountEl);
-    m.mount(mountEl, container);
+    m.mount(document.body, container);
   });
 
   it('handles exiting state/callbacks', (done) => {
@@ -81,8 +79,6 @@ describe('CSSTransition', () => {
       }
     };
 
-    const mountEl = document.createElement('div');
-    document.body.appendChild(mountEl);
-    m.mount(mountEl, container);
+    m.mount(document.body, container);
   });
 });
